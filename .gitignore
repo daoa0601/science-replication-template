@@ -1,0 +1,15 @@
+.DS_Store
+.env
+.coverage
+.venv/
+.pytest_cache/
+.ruff_cache/
+.basedpyright/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+data/*
+!data/README.md
+outputs/*
+!outputs/README.md

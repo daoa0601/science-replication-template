@@ -1,0 +1,61 @@
+[build-system]
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "paper-replication"
+version = "0.1.0"
+description = "Reproducible computational paper replication starter"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "basedpyright>=1.31,<2",
+  "pre-commit>=4,<5",
+  "pytest>=8.4,<10",
+  "pytest-cov>=6,<8",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+paper-replication = "paper_replication.cli:main"
+
+[tool.uv.build-backend]
+module-name = "paper_replication"
+
+[tool.pytest.ini_options]
+addopts = ["-ra", "--strict-config", "--strict-markers"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+extend-exclude = ["data", "outputs"]
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "N", "UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["paper_replication"]
+
+[tool.basedpyright]
+pythonVersion = "3.11"
+typeCheckingMode = "standard"
+include = ["src", "tests"]
+venvPath = "."
+venv = ".venv"
+reportMissingTypeStubs = false
+
+[tool.coverage.run]
+branch = true
+source = ["paper_replication"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 90

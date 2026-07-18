@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "Paper Replication"
+message: "Replace this metadata before publishing research results."
+type: software
+authors:
+  - family-names: "Replace"
+    given-names: "Me"
+version: 0.1.0
+license: MIT

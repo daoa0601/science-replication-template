@@ -1,0 +1,11 @@
+[paper]
+title = "Replace with the paper title"
+url = "https://example.invalid/paper"
+code_revision = "not-selected"
+dataset_revision = "not-selected"
+
+[experiment]
+name = "placeholder-baseline"
+hypothesis = "Replace with a falsifiable hypothesis"
+seed = 20260718
+repetitions = 3
