@@ -21,10 +21,10 @@ this repository's Git history, `.venv`, build output, or other ignored local sta
 ```bash
 template=/path/to/science-replication   # a checkout of this template
 dest=/path/to/my-paper-replication
-mkdir -p "$dest"
-git -C "$template" archive HEAD | tar -x -C "$dest"
-cd "$dest"
-git init
+# Refuses an existing destination, so a wrong path never overwrites another tree.
+mkdir -p "$(dirname "$dest")" && mkdir "$dest" &&
+  git -C "$template" archive HEAD | tar -x -C "$dest" &&
+  cd "$dest" && git init
 
 # Rename both the distribution and import package before real work.
 mv src/paper_replication src/my_replication
