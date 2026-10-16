@@ -1,4 +1,4 @@
-.PHONY: sync format lint typecheck test build check smoke
+.PHONY: sync format lint typecheck test check smoke
 
 sync:
 	uv sync --all-extras
@@ -17,10 +17,7 @@ typecheck:
 test:
 	uv run pytest --cov=paper_replication --cov-report=term-missing
 
-build:
-	uv build
-
 smoke:
 	uv run paper-replication configs/baseline.toml --dry-run
 
-check: lint typecheck test build smoke
+check: lint typecheck test smoke

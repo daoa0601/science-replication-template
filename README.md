@@ -1,6 +1,6 @@
 # Science replication starter
 
-A small, runnable starting point for computational paper replications. Copy this directory into a
+A small, runnable starting point for computational paper replications. Export this template into a
 new Git repository, then rename the `paper_replication` package and replace the placeholder trial
 before collecting real evidence.
 
@@ -13,11 +13,17 @@ The starter favors reproducibility over framework volume:
 - Ruff, basedpyright, pytest, pre-commit, and a minimal CI workflow;
 - explicit plans, result notes, data policy, and agent guidance.
 
-## Copy and rename
+## Export and rename
+
+Export the committed template rather than copying the directory, so the new project does not inherit
+this repository's Git history, `.venv`, build output, or other ignored local state:
 
 ```bash
-cp -R templates/science-replication /path/to/my-paper-replication
-cd /path/to/my-paper-replication
+template=/path/to/science-replication   # a checkout of this template
+dest=/path/to/my-paper-replication
+mkdir -p "$dest"
+git -C "$template" archive HEAD | tar -x -C "$dest"
+cd "$dest"
 git init
 
 # Rename both the distribution and import package before real work.
